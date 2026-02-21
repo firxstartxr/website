@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a personal static website built with plain HTML, CSS, and JavaScript. No build tools, frameworks, or package managers are used.
+This is a personal static website built with plain HTML and CSS. No JavaScript, build tools, frameworks, or package managers are used.
 
 ## Directory Structure
 
@@ -15,8 +15,6 @@ This is a personal static website built with plain HTML, CSS, and JavaScript. No
 │   ├── css/
 │   │   ├── reset.css      # CSS reset
 │   │   └── styles.css     # Main styles
-│   ├── js/
-│   │   └── quote.js       # Random quote widget
 │   ├── cv.pdf             # Resume/CV
 │   └── favicon.ico        # Site favicon
 ├── README.md
@@ -50,6 +48,7 @@ This is a **static website** - there are no build, lint, or test commands.
 - Include `lang` attribute on `<html>`: `<html lang="en">`
 - Include viewport meta tag for responsiveness
 - Page titles (in `<title>`) should be empty
+- All text content should be lowercase
 
 Example:
 ```html
@@ -70,7 +69,7 @@ Example:
     </header>
     <main>
         <ul>
-            <li>Email: <a href="mailto:example@example.com">example@example.com</a></li>
+            <li>email: <a href="mailto:example@example.com">example@example.com</a></li>
         </ul>
     </main>
     <footer>
@@ -113,44 +112,11 @@ a:hover {
 }
 ```
 
-### JavaScript
-
-- Use `const` for constants and arrays, `let` for mutable variables
-- Use `function` declarations (not arrow functions for top-level functions)
-- Use double quotes for strings
-- Use 4 spaces for indentation
-- Declare functions before they are used
-- Use meaningful variable and function names (camelCase)
-- Keep functions focused and small
-
-Example:
-```javascript
-const quotes = [
-    {
-        "quote": "Sample quote.",
-        "author": "Author Name",
-        "profession": "Profession",
-        "topics": ["Topic1", "Topic2"]
-    }
-];
-
-function displayRandomQuote() {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    const randomQuote = quotes[randomIndex];
-
-    document.getElementById("quote-text").textContent = `"${randomQuote.quote}"`;
-    document.getElementById("quote-author").textContent = `— ${randomQuote.author}`;
-}
-
-displayRandomQuote();
-```
-
 ### Naming Conventions
 
-- **Files**: lowercase with hyphens (e.g., `quote-widget.js`, `styles.css`)
+- **Files**: lowercase with hyphens (e.g., `styles.css`)
 - **CSS classes**: lowercase with hyphens (e.g., `.cat-art`, `.timestamp`)
-- **JavaScript variables/functions**: camelCase (e.g., `displayRandomQuote`, `randomIndex`)
-- **HTML ids**: lowercase with hyphens (e.g., `quote-text`, `quote-author`)
+- **HTML ids**: lowercase with hyphens
 
 ### Paths
 
@@ -162,13 +128,8 @@ displayRandomQuote();
 - All pages should have: header with cat art, nav, main content, footer
 - Nav should include "home" and "projects" links on all pages
 - No page titles (h1) should be displayed - use empty `<title>` tags
+- All text should be lowercase
 - Footer should show `&copy; 2026`
-
-### Error Handling
-
-- For simple static JS, use basic DOM checks (e.g., `document.getElementById('element')`)
-- No error boundaries or try/catch needed for this simple site
-- Ensure elements exist before manipulating them
 
 ### Accessibility
 
@@ -188,22 +149,13 @@ displayRandomQuote();
 2. Follow existing formatting (4 spaces, one property per line)
 3. Group with related rules
 
-### Adding new quotes
-1. Edit `assets/js/quote.js`
-2. Add new object to `quotes` array following existing format
-3. Ensure all fields are present: quote, author, profession, topics
-
-### Modifying the quote widget
-- The widget displays a random quote on page load
-- HTML elements required: `#quote-text`, `#quote-author`, optionally `#quote-profession`, `#quote-topics`
-- Function `displayRandomQuote()` handles the display logic
-
 ## Notes for Agents
 
 - This is a personal website - keep changes minimal and consistent with existing style
-- Do not add JavaScript frameworks, build tools, or testing frameworks
+- Do not add JavaScript, frameworks, build tools, or testing frameworks
 - Do not add TypeScript or CSS preprocessors
 - Maintain the dark theme aesthetic (#191919 background, #d9d9d9 text)
 - Keep the cat ASCII art in the header
 - The site uses monospace fonts throughout
 - Do not add page titles (h1) to pages
+- All text content should be lowercase
