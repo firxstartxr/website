@@ -39,6 +39,7 @@ nav a:hover {
 
 h1, h2, h3 {
     margin-top: 30px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
@@ -60,7 +61,7 @@ article {
 }
 
 footer {
-    margin-top: 50px;
+    margin-top: 30px;
     font-size: 0.8em;
     color: #888;
 }
