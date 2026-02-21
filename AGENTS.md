@@ -8,9 +8,7 @@ This is a personal static website built with plain HTML, CSS, and JavaScript. No
 
 ```
 /home/prokhor/Projects/website/
-├── index.html              # Home page
-├── about/index.html       # About page
-├── thoughts/index.html    # Thoughts/blog page
+├── index.html              # Home page (about info)
 ├── projects/index.html    # Projects page
 ├── 404.html               # Error page
 ├── assets/
@@ -21,7 +19,8 @@ This is a personal static website built with plain HTML, CSS, and JavaScript. No
 │   │   └── quote.js       # Random quote widget
 │   ├── cv.pdf             # Resume/CV
 │   └── favicon.ico        # Site favicon
-└── README.md
+├── README.md
+└── AGENTS.md
 ```
 
 ## Build/Lint/Test Commands
@@ -33,7 +32,11 @@ This is a **static website** - there are no build, lint, or test commands.
   npx serve .          # Using npx
   python3 -m http.server 8000  # Using Python
   ```
-- **Deployment**: Deploy the `assets/` folder and HTML files to any static hosting (GitHub Pages, Netlify, Vercel, etc.)
+  Note: Use `--prefix /website` flag when serving locally to match deployment paths:
+  ```bash
+  npx serve . --prefix /website
+  ```
+- **Deployment**: Deploy to GitHub Pages or any static hosting (Netlify, Vercel, etc.)
 
 ## Code Style Guidelines
 
@@ -46,6 +49,7 @@ This is a **static website** - there are no build, lint, or test commands.
 - Lowercase tags and attributes
 - Include `lang` attribute on `<html>`: `<html lang="en">`
 - Include viewport meta tag for responsiveness
+- Page titles (in `<title>`) should be empty
 
 Example:
 ```html
@@ -54,21 +58,23 @@ Example:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Title</title>
+    <title></title>
     <link rel="stylesheet" href="/website/assets/css/styles.css">
 </head>
 <body>
     <header>
         <nav>
             <a href="/website/">home</a>
-            <a href="/website/thoughts/">thoughts</a>
+            <a href="/website/projects/">projects</a>
         </nav>
     </header>
     <main>
-        <p>Content here</p>
+        <ul>
+            <li>Email: <a href="mailto:example@example.com">example@example.com</a></li>
+        </ul>
     </main>
     <footer>
-        &copy; 2025
+        &copy; 2026
     </footer>
 </body>
 </html>
@@ -113,7 +119,7 @@ a:hover {
 - Use `function` declarations (not arrow functions for top-level functions)
 - Use double quotes for strings
 - Use 4 spaces for indentation
-- Declare functions before they are used (no hoisting依赖)
+- Declare functions before they are used
 - Use meaningful variable and function names (camelCase)
 - Keep functions focused and small
 
@@ -132,8 +138,8 @@ function displayRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     const randomQuote = quotes[randomIndex];
 
-    document.getElementById('quote-text').textContent = `"${randomQuote.quote}"`;
-    document.getElementById('quote-author').textContent = `— ${randomQuote.author}`;
+    document.getElementById("quote-text").textContent = `"${randomQuote.quote}"`;
+    document.getElementById("quote-author").textContent = `— ${randomQuote.author}`;
 }
 
 displayRandomQuote();
@@ -149,7 +155,14 @@ displayRandomQuote();
 ### Paths
 
 - Use absolute paths starting with `/website/` for assets (e.g., `/website/assets/css/styles.css`)
-- Links within the site should follow the same pattern (e.g., `/website/thoughts/`)
+- Links within the site should follow the same pattern (e.g., `/website/projects/`)
+
+### Page Structure
+
+- All pages should have: header with cat art, nav, main content, footer
+- Nav should include "home" and "projects" links on all pages
+- No page titles (h1) should be displayed - use empty `<title>` tags
+- Footer should show `&copy; 2026`
 
 ### Error Handling
 
@@ -166,11 +179,9 @@ displayRandomQuote();
 
 ## Common Tasks
 
-### Adding a new page
-1. Create new HTML file in appropriate directory
-2. Copy structure from existing page (index.html)
-3. Update title, navigation, and content
-4. Add corresponding nav link to all pages
+### Adding a new project
+1. Edit `projects/index.html`
+2. Add a new `<div class="project">` with `<h2>` (project title/link) and `<p>` (description)
 
 ### Adding a new CSS rule
 1. Edit `assets/css/styles.css`
@@ -195,3 +206,4 @@ displayRandomQuote();
 - Maintain the dark theme aesthetic (#191919 background, #d9d9d9 text)
 - Keep the cat ASCII art in the header
 - The site uses monospace fonts throughout
+- Do not add page titles (h1) to pages
